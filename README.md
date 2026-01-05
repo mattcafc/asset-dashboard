@@ -1,73 +1,36 @@
-# React + TypeScript + Vite
+# Strategic Initiative Portfolio Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Professional, board-level portfolio dashboard for tracking strategic initiatives using **React**, **TypeScript**, and **Tailwind CSS**.
 
-Currently, two official plugins are available:
+## What’s included
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Executive summary**: status donut + portfolio health score + current quarter
+- **Portfolio metrics**: % complete, % on track, risk count
+- **Theme roll-ups**: grouped by `Opportunity` with worst-case health and progress
+- **Initiative table**: sortable, filterable, quarter status dots, risk flags, row drill-down
+- **Quarterly timeline**: milestone markers by quarter + overdue highlighting
+- **Risk register**: annual risk and quarterly risk flags with notes
+- **CSV ingestion**: upload or paste; persisted to local storage
+- **Export to PDF**: board paper pack export from the dashboard view
+- **Dark mode**: presentation-friendly toggle
 
-## React Compiler
+## Run
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## CSV format
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Required/expected columns include:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- `ID`
+- `Strategic Initiative`
+- `Opportunity`
+- `Lead`
+- `Accountable Executive`
+- `Annual Status`
+- `Annual Status Notes`
+- `Impact / Return Horizon`
+- `Q1 Milestone`, `Q1 Due`, `Q1 Status`, `Q1 Status Notes` (and Q2–Q4 equivalents)
